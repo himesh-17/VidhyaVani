@@ -1,0 +1,19 @@
+"use client";
+
+import React, { Suspense } from "react";
+import { BlogEditor } from "@/components/blogs/BlogEditor";
+import { RoleGate } from "@/components/shared/RoleGate";
+
+export default function AdminCreateBlogPage() {
+    return (
+        <RoleGate allowedRoles={["ADMIN"]}>
+            <div className="min-h-screen bg-slate-50/50 py-8">
+                <div className="container mx-auto px-4">
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <BlogEditor redirectPath="/dashboard/admin" />
+                    </Suspense>
+                </div>
+            </div>
+        </RoleGate>
+    );
+}
